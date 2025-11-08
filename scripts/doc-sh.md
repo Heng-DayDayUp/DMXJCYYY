@@ -2,18 +2,6 @@
 
 > 注意：用户环境是 Windows 11。`run.sh` 是 shell 脚本，适用于 Linux/macOS/WSL。若你在 Windows 原生 CMD/PowerShell，请参照下面的 Windows 使用说明或使用 WSL（推荐）。
 >
-> ## `run.sh` 的详解（逐行说明 & 注意点）
->
-> * `set -euo pipefail`：脚本出错即退出（安全做法）。
-> * `ROOT_DIR` / `REPO_ROOT`：自动定位仓库根目录（假设 `scripts/` 在仓库下）。
-> * `VENV_DIR`：虚拟环境目录（默认 `venv_run`）。
-> * 创建 venv 并激活：若已存在则跳过。激活后脚本在该虚拟环境中安装依赖并运行 Python。
-> * `pip install torch matplotlib requests tqdm`：安装基本依赖（ **注意** ：如果你需要 GPU 版 torch，请在脚本外手动安装合适的 torch 版本 / wheel，例如 `pip install torch --index-url https://download.pytorch.org/whl/cu118` 等）。
-> * 使用 `data.download_tiny_shakespeare()` 下载数据到 `data/tiny_shakespeare.txt`。
-> * 运行 `train.py` 的一系列命令：baseline + 三个消融（无位置编码、单头、无残差）。每次实验输出到 `results/<name>/`。
-> * `pandoc`：如果系统安装了 pandoc + LaTeX，会把 `report.md` 转为 `report.pdf`（带 toc 和 code listings）。如果没有 pandoc，则跳过。
-> * **日志与产物** ：每个实验目录下会保存 `model_epoch{n}.pt`、`vocab.json`、`train_loss.png`、`train_config.json` 等，方便提交。
->
 > ---
 >
 > ## 在 Windows 上如何运行？

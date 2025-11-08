@@ -57,7 +57,7 @@ mkdir -p "$RESULTS_DIR"
 # 4) Download dataset (tiny shakespeare) via data.py helper
 echo "Downloading dataset (tiny Shakespeare) ..."
 python - <<PY
-from data import download_tiny_shakespeare
+from src.data import download_tiny_shakespeare
 download_tiny_shakespeare("$DATA_DIR/tiny_shakespeare.txt")
 print("Downloaded to $DATA_DIR/tiny_shakespeare.txt")
 PY
@@ -66,7 +66,7 @@ PY
 BASE_DIR="$RESULTS_DIR/seq2seq_base"
 mkdir -p "$BASE_DIR"
 echo "Running baseline seq2seq experiment -> $BASE_DIR"
-python train.py \
+python src/train.py \
   --task seq2seq \
   --data "$DATA_DIR/tiny_shakespeare.txt" \
   --seq_len $SEQ_LEN \
@@ -86,7 +86,7 @@ python train.py \
 NO_POS_DIR="$RESULTS_DIR/no_pos"
 mkdir -p "$NO_POS_DIR"
 echo "Running ablation: no positional encoding -> $NO_POS_DIR"
-python train.py \
+python src/train.py \
   --task seq2seq \
   --data "$DATA_DIR/tiny_shakespeare.txt" \
   --seq_len $SEQ_LEN \
@@ -103,7 +103,7 @@ python train.py \
 ONE_HEAD_DIR="$RESULTS_DIR/one_head"
 mkdir -p "$ONE_HEAD_DIR"
 echo "Running ablation: single-head -> $ONE_HEAD_DIR"
-python train.py \
+python src/train.py \
   --task seq2seq \
   --data "$DATA_DIR/tiny_shakespeare.txt" \
   --seq_len $SEQ_LEN \
@@ -121,7 +121,7 @@ python train.py \
 NO_RES_DIR="$RESULTS_DIR/no_residual"
 mkdir -p "$NO_RES_DIR"
 echo "Running ablation: no residual -> $NO_RES_DIR"
-python train.py \
+python src/train.py \
   --task seq2seq \
   --data "$DATA_DIR/tiny_shakespeare.txt" \
   --seq_len $SEQ_LEN \
