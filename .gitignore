@@ -1,0 +1,7 @@
+__pycache__/
+results/
+data/
+
+要求/
+*.pyc
+.env
