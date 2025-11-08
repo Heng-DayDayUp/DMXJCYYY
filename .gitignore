@@ -1,6 +1,6 @@
 __pycache__/
-results/
-data/
+# results/
+# data/
 
 要求/
 *.pyc
